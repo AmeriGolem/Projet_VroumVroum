@@ -1,0 +1,468 @@
+<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALC</title>
+</head>
+
+
+<body>
+    <div id="Header">
+        <div id="logo">
+            <a href="Acceuil.html">
+                <img src="Images\images.png" alt="Logo_f1"></a>
+        </div>
+        <div id="links">
+            <a href="Evolution.html">Evolution</a>
+            <a href="Ecuries.html">Ecuries</a>
+            <a href="Pays.html">Pays</a>
+
+        </div>
+    </div>
+    <div id="page">
+        <div class="Section_bis">
+            <div class="text">
+                <p class="Titre">Ratio étranger-locaux</p>
+                <p class="Paragraphe">Il y a une forte présence de pilotes étrangers dans presque toutes les écuries,
+                    tandis que les pilotes locaux restent minoritaires.
+
+                    Les écuries les plus anciennes ou les plus célèbres (Ferrari, McLaren, Williams) ont plus de pilotes
+                    locaux comparativement aux écuries plus petites.
+                </p>
+            </div>
+            <div class="graph">
+                <canvas id="Pourcentage_de_pilotes_etranger_dans_une_ecuries_au_cours_du_temps"></canvas>
+            </div>
+        </div>
+        <div class="Section">
+
+            <div class="graph"><canvas id="point_par_ecurie"></canvas>
+            </div>
+            <div class="text">
+                <p class="Titre">Course aux points : les 4 écuries en tête</p>
+                <p class="Paragraphe">Ici on remarque que des écuries comme Ferrari ou bien McLaren dominent des ayant
+                    aqcuis plus de 6000 points au cours de leurs carrieres.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="Analyse">
+        <div class="Rapport">
+            <p class="Titre"> 4 écuries en tête</p>
+            <p class="Paragraphe">Bien qu'ayant rejoint la F1 plus récemment, ces trois écuries ont rapidement devancé
+                la concurrence et comblé leur retard sur Ferrari, l'équipe la plus historique des quatre.
+            </p>
+        </div>
+    </div>
+    <div class="Section_bis">
+        <div class="text">
+            <p class="Titre">Victoires par écuries</p>
+            <p class="Paragraphe">On observe que Ferrari, remporte le plus souvent les competions auquel elle participe.
+            </p>
+        </div>
+        <div class="graph"><canvas id="Victoires_des_ecurie"></div>
+    </div>
+
+
+    </canvas>
+    </div>
+    <div class="Section">
+        <div class="graph"><canvas id="Nombre_de_pole_position"></canvas></div>
+        <div class="text">
+            <p class="Titre">Nombre de pole position</p>
+            <p class="Paragraphe">De même que pour les victoires, Ferrari a une plus grande tendance à être en tête de
+                courses sui vie de McLaren,Mercedes et Red_Bull.
+            </p>
+        </div>
+    </div>
+    <div class="Section_bis">
+        <div class="text">
+            <p class="Titre">Problemes durant les courses</p>
+            <p class="Paragraphe">Les problèmes les plus reccurents pour ces écuries sont: les accidents de piste,
+                Pronlemes de moteurs et Les problemes de transmissions.On constate qu'il y'a peu d'accidents lié au
+                bleussures.
+        </div>
+        <div class="Probleme">
+            <div class="Ligne_pie">
+                <div><canvas id="problemes_ecuries_Ferrari"></canvas></div>
+                <div><canvas id="problemes_ecuries_Mercedes"></canvas></div>
+            </div>
+            <div class="Ligne_pie">
+                <div><canvas id="problemes_ecuries_McLaren"></canvas></div>
+                <div><canvas id="problemes_ecuries_Red_Bull"></canvas></div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<!-- Victoires par ecuries-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx1 = document.getElementById("Victoires_des_ecurie");
+
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: écurie = ['Ferrari', 'McLaren', 'Mercedes', 'Red Bull'],
+            datasets: [{
+                label: 'Nombre de Victoires',
+                data: nombre_de_victoire = [15, 10, 8, 6],
+                borderWidth: 1,
+
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: "Ecuries",
+
+                    },
+                },
+                y: {
+                    title: {
+                        beginAtZero: true,
+                        display: true,
+                        text: ''
+                    }
+                },
+
+            }
+        }
+    });
+</script>
+
+<!-- Point par ecuries au cours du temps -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx2 = document.getElementById("point_par_ecurie");
+
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: écurie = ['Ferrari',
+                'Red Bull',
+                'Mercedes',
+                'McLaren',
+                'Williams',
+                'Renault',
+                'Force India',
+                'Benetton',
+                'Team Lotus',
+                'Lotus F1'],
+            datasets: [{
+                label: 'Nombre de Points',
+                data: nombre_de_points = [
+                    10331.0,
+                    7837.0,
+                    7690.5,
+                    7056.5,
+                    3643.0,
+                    1777.0,
+                    1098.0,
+                    861.5,
+                    835.0,
+                    706.0,],
+                borderWidth: 1,
+
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: "Ecuries",
+
+                    },
+                },
+                y: {
+                    title: {
+                        beginAtZero: true,
+                        display: true,
+                        text: ''
+                    }
+                },
+
+            }
+        }
+    });
+</script>
+
+<!-- Nombre de pole position -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx3 = document.getElementById("Nombre_de_pole_position");
+
+    new Chart(ctx3, {
+        type: 'bar',
+        data: {
+            labels: écurie = ['Ferrari', 'McLaren', 'Mercedes', 'Red Bull'],
+            datasets: [{
+                label: 'Nombre de pole position',
+                data: nb_de_fois_top1 = [234, 173, 145, 124],
+                borderWidth: 1,
+
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: "Ecuries",
+
+                    },
+                },
+                y: {
+                    title: {
+                        beginAtZero: true,
+                        display: true,
+                        text: ''
+                    }
+                },
+
+            }
+        }
+    });
+</script>
+
+<!-- Local/Etranger dnas les ecuries -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx4 = document.getElementById('Pourcentage_de_pilotes_etranger_dans_une_ecuries_au_cours_du_temps');
+
+    new Chart(ctx4, {
+        type: 'bar',
+        data: {
+            labels: écurie = ['AlphaTauri',
+                'Force India',
+                'Aston Martin',
+                'Mercedes',
+                'Red Bull',
+                'Benetton',
+                'Renault',
+                'McLaren',
+                'Williams',
+                'Ferrari'],
+            datasets: [{
+                label: 'Nombre de locaux par écurie',
+                data: nombre_de_locaux_par_écurie = [0, 0, 1, 5, 1, 5, 8, 16, 14, 27],
+                borderWidth: 1,
+                stack: 'Stack 0',
+                yAxisID: 'yLeft'
+            },
+            {
+                label: "Nombre d'étranger par écurie",
+                data: nombre_étranger_par_écurie = [6, 7, 6, 7, 11, 12, 18, 39, 48, 71],
+                borderWidth: 1,
+                stack: 'Stack 0',
+                yAxisID: 'yLeft'
+
+            }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+
+                    title: {
+                        display: true,
+                        text: "Ecuries",
+
+                    },
+
+                },
+                yLeft: {
+                    position: 'left',
+                    title: {
+                        beginAtZero: true,
+                        display: true,
+                        text: 'Nombre de conductueurs'
+                    }
+                },
+
+            }
+        }
+    });
+</script>
+
+<!-- Pie charts problemes -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx5 = document.getElementById('problemes_ecuries_Mercedes');
+
+    new Chart(ctx5, {
+        type: 'doughnut',
+        data: {
+            labels: ['On-track incident', 'Engine/Fuel/Exhaust', 'Chassis/Handling', 'Transmission', 'Hydraulics/Cooling', 'Electrical']
+            ,
+            datasets: [{
+                label: 'My First Dataset',
+                data: [29, 22, 11, 5, 3, 2],
+                backgroundColor: [
+                    'RGB(254, 16, 56)',
+                    'rgb(187, 199, 164)',
+                    'rgb(219, 211, 216)',
+                    'rgb(244, 91, 105)',
+                    'RGB(34, 56, 67)',
+                    'RGB(172, 225, 175)', 'RGB(10, 232, 100)'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: "Mercedes",
+
+                },
+                datalabels: {
+                    display: false
+                }, datalabels: {
+                    display: false
+                },
+                legend: { display: false }
+
+
+            }
+        }
+
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx6 = document.getElementById('problemes_ecuries_McLaren');
+
+    new Chart(ctx6, {
+        type: 'doughnut',
+        data: {
+            labels: ['Engine/Fuel/Exhaust', 'On-track incident', 'Transmission', 'Chassis/Handling', 'Electrical', 'Hydraulics/Cooling', 'Other/Unknown', 'Injuries']
+            ,
+            datasets: [{
+                label: 'My First Dataset',
+                data: [195, 188, 62, 53, 33, 12, 3, 1],
+                backgroundColor: [
+                    'RGB(254, 16, 56)',
+                    'rgb(187, 199, 164)',
+                    'rgb(219, 211, 216)',
+                    'rgb(244, 91, 105)',
+                    'RGB(34, 56, 67)',
+                    'RGB(172, 225, 175)', 'RGB(10, 10, 100)',
+                    'RGB(20, 80, 35)'],
+                hoverOffset: 4
+            }]
+        }, options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: "McLaren",
+
+                },
+                datalabels: {
+                    display: false
+                },
+                legend: { display: false }
+            }
+
+        }
+    }
+
+    );
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx7 = document.getElementById('problemes_ecuries_Ferrari');
+
+    new Chart(ctx7, {
+        type: 'doughnut',
+        data: {
+            labels: ['Engine/Fuel/Exhaust', 'On-track incident', 'Transmission', 'Chassis/Handling', 'Electrical', 'Hydraulics/Cooling', 'Other/Unknown', 'Injuries']
+            ,
+            datasets: [{
+                label: 'My First Dataset',
+                data: [270, 203, 100, 74, 36, 13, 4, 2],
+                backgroundColor: [
+                    'RGB(254, 16, 56)',
+                    'rgb(187, 199, 164)',
+                    'rgb(219, 211, 216)',
+                    'rgb(244, 91, 105)',
+                    'RGB(34, 56, 67)',
+                    'RGB(172, 225, 175)', 'RGB(10, 232, 100)',
+                    'RGB(10, 10, 100)'],
+                hoverOffset: 4
+            }]
+        }, options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: "Ferrari",
+
+                },
+
+            }
+        }
+
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx8 = document.getElementById('problemes_ecuries_Red_Bull');
+
+    new Chart(ctx8, {
+        type: 'doughnut',
+        data: {
+            labels: ['On-track incident', 'Engine/Fuel/Exhaust', 'Transmission', 'Chassis/Handling', 'Electrical', 'Hydraulics/Cooling', 'Technical']
+
+            ,
+            datasets: [{
+                label: 'My First Dataset',
+                data: [54, 24, 17, 16, 11, 10, 1],
+                backgroundColor: [
+                    'RGB(254, 16, 56)',
+                    'rgb(187, 199, 164)',
+                    'rgb(219, 211, 216)',
+                    'rgb(244, 91, 105)',
+                    'RGB(34, 56, 67)',
+                    'RGB(172, 225, 175)', 'RGB(10, 232, 100)'],
+                hoverOffset: 4
+            }]
+        }, options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: "Red Bull",
+
+                }, datalabels: {
+                    display: false
+                },
+                legend: { display: false }
+
+            }
+        }
+
+    });
+</script>

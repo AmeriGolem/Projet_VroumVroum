@@ -1,0 +1,382 @@
+<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALC</title>
+</head>
+
+
+<body>
+    <div id="Header">
+        <div id="logo">
+            <a href="Acceuil.html">
+                <img src="Images\images.png" alt="Logo_f1"></a>
+        </div>
+        <div id="links">
+            <a href="Evolution.html">Evolution</a>
+            <a href="Ecuries.html">Ecuries</a>
+            <a href="Pays.html">Pays</a>
+
+        </div>
+    </div>
+    <div id="page">
+
+        <div class="Section">
+            <div class="graph">
+                <canvas id="Nombre_de_circuits_par_pays"></canvas>
+            </div>
+            <div class="text">
+                <p class="Titre">Le nombre de circuit dans chaque Pays</p>
+                <p class="Paragraphe">On remarque que la majorité des circuits proviennent d'Europe, ce qui parait
+                    logique étant donné que les premiers Grand Prix se sont fait en europe.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="Section_bis">
+            <div class="text">
+                <p class="Titre">Le nombre d'écurie dans chaque Pays</p>
+                <p class="Paragraphe">On peut voir, que les anglais ont le plus participé a la f1, suivi par les
+                    américains et les italiens de loin.
+                </p>
+
+            </div>
+            <div class="graph"><canvas id="Nombre_de_constructeurs_par_pays"></canvas></div>
+        </div>
+
+        <div class="Pie_chart">
+
+            <div class="pie"><canvas id="Nationalite_des_ecuries_vainqueurs"></canvas></div>
+
+            <div class="pie"><canvas id="Nationalite_des_pilotes_vainqueurs"></canvas></div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+
+
+<!-- Nationalite des  ecuries vainqueurs-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx1 = document.getElementById('Nationalite_des_ecuries_vainqueurs');
+
+    new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+            labels: Nationalite = ['British', 'Italian',
+                'Austrian',
+                'French',
+                'German',
+                'Japanese'
+            ]
+            ,
+            datasets: [{
+                label: 'My First Dataset',
+                data: nombre_de_win_des_ecuries_par_anné = [36, 15,
+                    7,
+                    5,
+                    2,
+                    2
+                ],
+                backgroundColor: [
+                    'RGB(254, 16, 56)',
+                    'rgb(187, 199, 164)',
+                    'rgb(219, 211, 216)',
+                    'rgb(244, 91, 105)',
+                    'RGB(34, 56, 67)',
+                    'RGB(17, 200, 50)'],
+                hoverOffset: 4
+            }]
+        }, options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: "Repartion des victoires des écurires par pays",
+
+                },
+
+            }
+        }
+
+    });
+</script>
+
+<!-- Nationalite des  pilote vainqueurs-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx2 = document.getElementById('Nationalite_des_pilotes_vainqueurs');
+
+    new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+            labels: Nationalite = N = [
+                'British',
+                'German',
+                'Brazilian',
+                'Argentine',
+                'Australian',
+                'Canadian',
+                'Dutch',
+                'Finnish',
+                'French',
+                'Italian',
+                'Spanish',
+                'New Zealander',
+                'South African',
+                'American',
+                'Austrian']
+            ,
+            datasets: [{
+                label: 'My First Dataset',
+                data: nb_de_gagant = [
+                    21,
+                    12,
+                    8,
+                    5,
+                    4,
+                    4,
+                    4,
+                    4,
+                    4,
+                    3,
+                    2,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                backgroundColor: [
+                    'rgb(254, 16, 56)',
+                    'rgb(187, 199, 164)',
+                    'rgb(219, 211, 216)',
+                    'rgb(244, 91, 105)',
+                    'rgb(34, 56, 67)',
+                    'rgb(172, 225, 175)',
+                    'rgb(10, 232, 100)',
+                    'rgb(250, 134, 150)',
+                    'rgb(92, 107, 115)',
+                    'rgb(255, 204, 210)',
+                    'rgb(114, 160, 93)',
+                    'rgb(212, 185, 197)',
+                    'rgb(255, 170, 85)',
+                    'rgb(70, 93, 117)',
+                    'rgb(199, 230, 221)',
+                    'rgb(165, 214, 167)',
+                ],
+                hoverOffset: 4
+            }]
+        }, options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: "Repartion des victoires des pilotes par pays",
+
+                },
+
+            }
+        }
+
+    });
+</script>
+
+<!-- Nombre de circuits par pays-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx3 = document.getElementById('Nombre_de_circuits_par_pays');
+
+    new Chart(ctx3, {
+        type: 'bar',
+        data: {
+            labels: ['USA',
+                'France',
+                'Spain',
+                'Italy',
+                'Portugal',
+                'UK',
+                'Belgium',
+                'Canada',
+                'Germany',
+                'Japan',
+                'Australia',
+                'Austria',
+                'Brazil',
+                'South Africa',
+                'Argentina',
+                'Azerbaijan',
+                'Bahrain',
+                'China',
+                'Hungary',
+                'India',
+                'Korea',
+                'Malaysia',
+                'Mexico',
+                'Monaco',
+                'Morocco',
+                'Netherlands',
+                'Qatar',
+                'Russia',
+                'Saudi Arabia',
+                'Singapore',
+                'Sweden',
+                'Switzerland',
+                'Turkey',
+                'UAE',],
+            datasets: [{
+                label: 'Nombre de ciruits ',
+                data: [11,
+                    7,
+                    6,
+                    4,
+                    4,
+                    4,
+                    3,
+                    3,
+                    3,
+                    3,
+                    2,
+                    2,
+                    2,
+                    2,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'pays'
+                    }
+
+                },
+                y: {
+                    title: {
+                        beginAtZero: true,
+                        display: true,
+                        text: ''
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- Nombre de constructeur par pays-->
+<script>
+    const ctx4 = document.getElementById('Nombre_de_constructeurs_par_pays');
+
+    new Chart(ctx4, {
+        type: 'bar',
+        data: {
+            labels: pays = [
+                'British',
+                'American',
+                'Italian',
+                'French',
+                'German',
+                'Japanese',
+                'Swiss',
+                'Dutch',
+                'South African',
+                'Canadian',
+                'Russian',
+                'Malaysian',
+                'Brazilian',
+                'Australian',
+                'Austrian',
+                'Belgian',
+                'Indian',
+                'Irish',
+                'East German',
+                'Hong Kong',
+                'Rhodesian',
+                'New Zealander',
+                'Mexican',
+                'Spanish'
+            ],
+            datasets: [{
+                label: "Nombre d'ecuries",
+                data: nb_decurie = [
+                    86,
+                    39,
+                    30,
+                    13,
+                    10,
+                    5,
+                    5,
+                    3,
+                    3,
+                    2,
+                    2,
+                    2,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'pays'
+                    }
+
+                },
+                y: {
+                    title: {
+                        beginAtZero: true,
+                        display: true,
+                        text: ''
+                    }
+                }
+            }
+        }
+    });
+</script>

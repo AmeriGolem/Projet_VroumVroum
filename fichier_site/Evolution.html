@@ -1,0 +1,708 @@
+<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALC</title>
+</head>
+
+
+<body>
+    <div id="Header">
+        <div id="logo">
+            <a href="Acceuil.html">
+                <img src="Images\images.png" alt="Logo_f1"></a>
+        </div>
+        <div id="links">
+            <a href="Evolution.html">Evolution</a>
+            <a href="Ecuries.html">Ecuries</a>
+            <a href="Pays.html">Pays</a>
+
+        </div>
+    </div>
+    <div id="page">
+        <div class="Section">
+            <div class="graph">
+                <canvas id="Nombre_de_participants_par_saisons_par annee"></canvas>
+            </div>
+
+            <div class="text">
+                <p class="Titre">Le nombre de participants par année</p>
+                <p class="Paragraphe">L’évolution montre une diminution progressive du nombre au cours du temps. Cela
+                    indique probablement la mise en place de règlements visant à le restreindre. Étant donné que la
+                    vitesse en Formule 1 ne cesse d’augmenter, ces règles ont permis de renforcer la sécurité et de
+                    prévenir les accidents.
+                </p>
+            </div>
+
+        </div>
+        <div class="Section_bis">
+            <div class="text">
+                <p class="Titre">L'âge des différents gagnant chaque année</p>
+                <p class="Paragraphe">On remarque que les vainqueurs sont de plus en plus jeunes, ce qui montre que les
+                    pilotes commencent leur formation beaucoup plus tôt qu’auparavant.
+                </p>
+            </div>
+            <div class="graph">
+                <canvas id="Age_des_gagnants_par_année"></canvas>
+            </div>
+        </div>
+
+
+        <div class="Section">
+            <div class="graph">
+                <canvas id="Evolution_des_4_meilleures_ecuries_en_fonction de_l_annee"></canvas>
+            </div>
+            <div class="text">
+                <p class="Titre">Les 4 meilleures écuries toujours en course</p>
+                <p class="Paragraphe">Ce graphique montre l’évolution des performances des quatre écuries les plus
+                    emblématiques de la Formule 1 : Ferrari, Mercedes, Red Bull et McLaren. On observe que certaines
+                    équipes, comme Ferrari et McLaren, sont présentes depuis de nombreuses décennies, tandis que
+                    d’autres, comme Red Bull et Mercedes, se sont imposées plus récemment.
+                    Les performances fluctuent au fil du temps, reflétant l’impact des innovations technologiques, des
+                    stratégies d’équipe et des changements de pilotes. Aujourd’hui, ces quatre écuries continuent de
+                    dominer le championnat, chacune ayant marqué l’histoire à sa manière.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+
+
+
+
+<!-- 4 best ecuries  durans les années-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx6 = document.getElementById('Evolution_des_4_meilleures_ecuries_en_fonction de_l_annee');
+
+
+
+    new Chart(ctx6, {
+        type: 'line',
+        data: {
+            labels: years = [1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959,
+                1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969,
+                1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979,
+                1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989,
+                1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+                2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+                2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+                2020, 2021, 2022, 2023, 2024]
+            ,
+            datasets: [{
+                label: 'Nombre de points de Ferrari',
+                data: points_ferrari = [
+                    null,   // 1950
+                    null,   // 1951
+                    null,   // 1952
+                    null,   // 1953
+                    null,   // 1954
+                    null,   // 1955
+                    null,   // 1956
+                    null,   // 1957
+                    61.0,   // 1958
+                    38.0,   // 1959
+                    29.0,   // 1960
+                    67.0,   // 1961
+                    18.0,   // 1962
+                    26.0,   // 1963
+                    49.0,   // 1964
+                    27.0,   // 1965
+                    32.0,   // 1966
+                    20.0,   // 1967
+                    32.0,   // 1968
+                    7.0,    // 1969
+                    61.0,   // 1970
+                    33.0,   // 1971
+                    33.0,   // 1972
+                    12.0,   // 1973
+                    65.0,   // 1974
+                    72.5,   // 1975
+                    83.0,   // 1976
+                    97.0,   // 1977
+                    58.0,   // 1978
+                    113.0,  // 1979
+                    8.0,    // 1980
+                    34.0,   // 1981
+                    74.0,   // 1982
+                    89.0,   // 1983
+                    57.5,   // 1984
+                    82.0,   // 1985
+                    37.0,   // 1986
+                    53.0,   // 1987
+                    65.0,   // 1988
+                    59.0,   // 1989
+                    110.0,  // 1990
+                    55.5,   // 1991
+                    21.0,   // 1992
+                    28.0,   // 1993
+                    71.0,   // 1994
+                    null,   // 1995
+                    73.0,   // 1996
+                    70.0,   // 1997
+                    102.0,  // 1998
+                    133.0,  // 1999
+                    128.0,  // 2000
+                    170.0,  // 2001
+                    179.0,  // 2002
+                    221.0,  // 2003
+                    158.0,  // 2004
+                    262.0,  // 2005
+                    100.0,  // 2006
+                    201.0,  // 2007
+                    204.0,  // 2008
+                    172.0,  // 2009
+                    70.0,   // 2010
+                    396.0,  // 2011
+                    375.0,  // 2012
+                    400.0,  // 2013
+                    354.0,  // 2014
+                    216.0,  // 2015
+                    428.0,  // 2016
+                    398.0,  // 2017
+                    522.0,  // 2018
+                    571.0,  // 2019
+                    504.0,  // 2020
+                    131.0,  // 2021
+                    323.5,  // 2022
+                    554.0,  // 2023
+                    406.0,  // 2024
+                    652.0   // 2025 
+                ],
+                borderWidth: 1,
+                spanGaps: true,
+                tension: 0.2,
+                pointRadius: 0,
+                pointHoverRadius: 4,
+                borderColor: 'rgb(25, 135, 135)'
+
+            }, {
+                label: 'Nombre de points de Mercedes',
+                data: point_Mercedes = [
+                    null,   // 1950
+                    null,   // 1951
+                    null,   // 1952
+                    null,   // 1953
+                    null,   // 1954
+                    null,   // 1955
+                    null,   // 1956
+                    null,   // 1957
+                    null,   // 1958
+                    null,   // 1959
+                    null,   // 1960
+                    null,   // 1961
+                    null,   // 1962
+                    null,   // 1963
+                    null,   // 1964
+                    null,   // 1965
+                    null,   // 1966
+                    null,   // 1967
+                    null,   // 1968
+                    null,   // 1969
+                    null,   // 1970
+                    null,   // 1971
+                    null,   // 1972
+                    null,   // 1973
+                    null,   // 1974
+                    null,   // 1975
+                    null,   // 1976
+                    null,   // 1977
+                    null,   // 1978
+                    null,   // 1979
+                    null,   // 1980
+                    null,   // 1981
+                    null,   // 1982
+                    null,   // 1983
+                    null,   // 1984
+                    null,   // 1985
+                    null,   // 1986
+                    null,   // 1987
+                    null,   // 1988
+                    null,   // 1989
+                    null,   // 1990
+                    null,   // 1991
+                    null,   // 1992
+                    null,   // 1993
+                    null,   // 1994
+                    null,   // 1995
+                    null,   // 1996
+                    null,   // 1997
+                    null,   // 1998
+                    null,   // 1999
+                    null,   // 2000
+                    null,   // 2001
+                    null,   // 2002
+                    null,   // 2003
+                    null,   // 2004
+                    null,   // 2005
+                    null,   // 2006
+                    null,   // 2007
+                    null,   // 2008
+                    null,   // 2009
+                    214.0,  // 2010
+                    165.0,  // 2011
+                    142.0,  // 2012
+                    360.0,  // 2013
+                    701.0,  // 2014
+                    703.0,  // 2015
+                    765.0,  // 2016
+                    668.0,  // 2017
+                    655.0,  // 2018
+                    739.0,  // 2019
+                    573.0,  // 2020
+                    613.5,  // 2021
+                    515.0,  // 2022
+                    409.0,  // 2023
+                    468.0   // 2024
+                ]
+                ,
+                borderWidth: 1,
+                spanGaps: true,
+                tension: 0.2,
+                pointRadius: 0,
+                pointHoverRadius: 4,
+                borderColor: 'rgb(255, 135, 0)'
+            }, {
+                label: 'Nombre de points de Red Bull',
+                data: point_Red_Bull = [
+                    null,   // 1950
+                    null,   // 1951
+                    null,   // 1952
+                    null,   // 1953
+                    null,   // 1954
+                    null,   // 1955
+                    null,   // 1956
+                    null,   // 1957
+                    null,   // 1958
+                    null,   // 1959
+                    null,   // 1960
+                    null,   // 1961
+                    null,   // 1962
+                    null,   // 1963
+                    null,   // 1964
+                    null,   // 1965
+                    null,   // 1966
+                    null,   // 1967
+                    null,   // 1968
+                    null,   // 1969
+                    null,   // 1970
+                    null,   // 1971
+                    null,   // 1972
+                    null,   // 1973
+                    null,   // 1974
+                    null,   // 1975
+                    null,   // 1976
+                    null,   // 1977
+                    null,   // 1978
+                    null,   // 1979
+                    null,   // 1980
+                    null,   // 1981
+                    null,   // 1982
+                    null,   // 1983
+                    null,   // 1984
+                    null,   // 1985
+                    null,   // 1986
+                    null,   // 1987
+                    null,   // 1988
+                    null,   // 1989
+                    null,   // 1990
+                    null,   // 1991
+                    null,   // 1992
+                    null,   // 1993
+                    null,   // 1994
+                    null,   // 1995
+                    null,   // 1996
+                    null,   // 1997
+                    null,   // 1998
+                    null,   // 1999
+                    null,   // 2000
+                    null,   // 2001
+                    null,   // 2002
+                    null,   // 2003
+                    null,   // 2004
+                    34.0,   // 2005
+                    16.0,   // 2006
+                    24.0,   // 2007
+                    29.0,   // 2008
+                    153.5,  // 2009
+                    498.0,  // 2010
+                    650.0,  // 2011
+                    460.0,  // 2012
+                    596.0,  // 2013
+                    405.0,  // 2014
+                    187.0,  // 2015
+                    468.0,  // 2016
+                    368.0,  // 2017
+                    419.0,  // 2018
+                    417.0,  // 2019
+                    319.0,  // 2020
+                    585.5,  // 2021
+                    759.0,  // 2022
+                    860.0,  // 2023
+                    589.0   // 2024
+                ]
+                ,
+                borderWidth: 1,
+                spanGaps: true,
+                tension: 0.2,
+                pointRadius: 0,
+                pointHoverRadius: 4,
+                borderColor: 'rgb(30, 65, 170)',
+
+            },
+            {
+                label: 'Nombre de points de McLarren',
+                data: point_McLaren = [
+                    null,   // 1950
+                    null,   // 1951
+                    null,   // 1952
+                    null,   // 1953
+                    null,   // 1954
+                    null,   // 1955
+                    null,   // 1956
+                    null,   // 1957
+                    null,   // 1958
+                    null,   // 1959
+                    null,   // 1960
+                    null,   // 1961
+                    null,   // 1962
+                    null,   // 1963
+                    null,   // 1964
+                    null,   // 1965
+                    null,   // 1966
+                    null,   // 1967
+                    0.0,    // 1968
+                    null,   // 1969
+                    null,   // 1970
+                    10.0,   // 1971
+                    53.0,   // 1972
+                    58.0,   // 1973
+                    75.0,   // 1974
+                    53.0,   // 1975
+                    75.0,   // 1976
+                    60.0,   // 1977
+                    15.0,   // 1978
+                    15.0,   // 1979
+                    11.0,   // 1980
+                    28.0,   // 1981
+                    69.0,   // 1982
+                    34.0,   // 1983
+                    143.5,  // 1984
+                    90.0,   // 1985
+                    96.0,   // 1986
+                    76.0,   // 1987
+                    199.0,  // 1988
+                    141.0,  // 1989
+                    121.0,  // 1990
+                    139.0,  // 1991
+                    99.0,   // 1992
+                    84.0,   // 1993
+                    42.0,   // 1994
+                    30.0,   // 1995
+                    49.0,   // 1996
+                    63.0,   // 1997
+                    156.0,  // 1998
+                    124.0,  // 1999
+                    162.0,  // 2000
+                    102.0,  // 2001
+                    65.0,   // 2002
+                    142.0,  // 2003
+                    69.0,   // 2004
+                    182.0,  // 2005
+                    110.0,  // 2006
+                    218.0,  // 2007
+                    151.0,  // 2008
+                    71.0,   // 2009
+                    454.0,  // 2010
+                    497.0,  // 2011
+                    378.0,  // 2012
+                    122.0,  // 2013
+                    181.0,  // 2014
+                    27.0,   // 2015
+                    76.0,   // 2016
+                    30.0,   // 2017
+                    62.0,   // 2018
+                    145.0,  // 2019
+                    202.0,  // 2020
+                    275.0,  // 2021
+                    159.0,  // 2022
+                    302.0,  // 2023
+                    666.0   // 2024
+                ]
+                ,
+                borderWidth: 1,
+                spanGaps: true,
+                tension: 0.2,
+                pointRadius: 0,
+                pointHoverRadius: 4,
+                borderColor: 'rgb(220, 38, 38)'
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Années'
+                    }
+
+                },
+                y: {
+                    title: {
+                        beginAtZero: true,
+                        display: true,
+                        text: ''
+                    }
+                }
+            }
+        }
+    });
+
+</script>
+
+
+<!-- Nombre departicipants-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx1 = document.getElementById('Nombre_de_participants_par_saisons_par annee');
+
+    new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: years = [1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959,
+                1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969,
+                1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979,
+                1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989,
+                1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+                2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+                2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+                2020, 2021, 2022, 2023, 2024],
+            datasets: [{
+                label: 'Nombre de participants',
+                data: nb_de_pilote_année = [80,
+                    83,
+                    104,
+                    107,
+                    97,
+                    83,
+                    82,
+                    75,
+                    85,
+                    82,
+                    87,
+                    60,
+                    60,
+                    61,
+                    39,
+                    54,
+                    31,
+                    44,
+                    43,
+                    30,
+                    43,
+                    50,
+                    41,
+                    41,
+                    61,
+                    50,
+                    52,
+                    59,
+                    46,
+                    36,
+                    41,
+                    39,
+                    40,
+                    35,
+                    34,
+                    36,
+                    32,
+                    32,
+                    36,
+                    47,
+                    39,
+                    41,
+                    32,
+                    30,
+                    46,
+                    34,
+                    23,
+                    25,
+                    22,
+                    22,
+                    22,
+                    25,
+                    21,
+                    23,
+                    24,
+                    26,
+                    26,
+                    25,
+                    22,
+                    25,
+                    27,
+                    28,
+                    25,
+                    23,
+                    24,
+                    22,
+                    24,
+                    25,
+                    20,
+                    20,
+                    23,
+                    21,
+                    22,
+                    22,
+                    24],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Années'
+                    }
+
+                },
+                y: {
+                    title: {
+                        beginAtZero: true,
+                        display: true,
+                        text: ''
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+
+<!-- Age des gagnant-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx2 = document.getElementById('Age_des_gagnants_par_année');
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: years = [1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959,
+                1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969,
+                1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979,
+                1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989,
+                1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+                2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+                2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+                2020, 2021, 2022, 2023, 2024],
+            datasets: [{
+                label: 'Age',
+                data: age_world_champion = [44,
+                    40,
+                    34,
+                    35,
+                    43,
+                    44,
+                    45,
+                    46,
+                    29,
+                    33,
+                    34,
+                    32,
+                    33,
+                    27,
+                    30,
+                    29,
+                    40,
+                    31,
+                    39,
+                    30,
+                    28,
+                    32,
+                    26,
+                    34,
+                    28,
+                    26,
+                    29,
+                    28,
+                    38,
+                    29,
+                    34,
+                    29,
+                    34,
+                    31,
+                    35,
+                    30,
+                    31,
+                    35,
+                    28,
+                    34,
+                    30,
+                    31,
+                    39,
+                    38,
+                    25,
+                    26,
+                    36,
+                    26,
+                    30,
+                    31,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    24,
+                    25,
+                    28,
+                    23,
+                    29,
+                    23,
+                    24,
+                    25,
+                    26,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    24,
+                    25,
+                    26,
+                    27],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Années'
+                    }
+
+                },
+                y: {
+                    title: {
+                        beginAtZero: true,
+                        display: true,
+                        text: ''
+                    }
+                }
+            }
+        }
+    });
+</script>
